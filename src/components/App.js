@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddTodo from '../containers/Addtodo';
 import Todos from '../containers/todos';
+import Filters from '../containers/filters';
 
 class App extends Component {
     render() {
@@ -8,7 +9,7 @@ class App extends Component {
             <div>
                 <AddTodo />
                 <Todos />
-                {/* <Filters /> */}
+                <Filters />
             </div>
         );
     }

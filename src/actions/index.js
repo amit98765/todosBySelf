@@ -18,9 +18,9 @@ export function toggleTodo(id) {
     }
 }
 
-export function changeFilter(filter) {
+export function changeFilter(val) {
     return {
         type: CHANGE_FILTER,
-        filter: filter
+        filter: val
     }
 }

@@ -5,7 +5,7 @@ class AddTodo extends React.Component {
         console.log(document.getElementById("newTodo").value);
         if (document.getElementById("newTodo").value != "") {
             this.props.onclick(document.getElementById("newTodo").value);
-
+            document.getElementById("newTodo").value = "";
         }
     }
     render() {

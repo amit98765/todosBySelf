@@ -1,32 +1,39 @@
 import React from 'react';
 import { FILTERS } from '../Actions';
+import { changeFilter } from '../actions/index';
+import FilterComponent from '../components/FilterComponent';
+import { connect } from 'react-redux';
 
-class Filtes extends React.Component {
+class Filters extends React.Component {
     render() {
         return (<div>
             Show: {' '}
-            <FilterComponent filter={FILTERS.SHOW_ALL} text="All"
-                onclick={this.props.onClick}
-                currentFilter={this.props.currentFilter} />
+            <FilterComponent text="All"
+                onclick={() => this.props.onClick(FILTERS.SHOW_ALL)}
+                active={(this.props.currentFilter === FILTERS.SHOW_ALL)
+                } />
 
-            <FilterComponent filter={FILTERS.SHOW_ACTIVE} text="Active" onclick={this.props.onClick}
-                currentFilter={this.props.currentFilter} />
-
-            <FilterComponent filter={FILTERS.SHOW_COMPLETED} text="Completed" onclick={this.props.onClick}
-                currentFilter={this.props.currentFilter} />
+            <FilterComponent text="Active"
+                onclick={() => this.props.onClick(FILTERS.SHOW_ACTIVE)}
+                active={(this.props.currentFilter === FILTERS.SHOW_ACTIVE)
+                } />
+            <FilterComponent text="Completed"
+                onclick={() => this.props.onClick(FILTERS.SHOW_COMPLETED)}
+                active={(this.props.currentFilter === FILTERS.SHOW_COMPLETED)
+                } />
         </div>)
     }
 }
 
-mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         currentFilter: state.currentFilter
     }
 }
 
-mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        
+        onClick: (filter) => dispatch(changeFilter(filter))
     }
 }
 
